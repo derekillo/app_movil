@@ -1,0 +1,128 @@
+Registrar Usuarios
+
+Ruta: http://TU_IP:3000/sso/register
+Metodo: POST
+Data Format: JSON
+{
+    "token":     String,  <--  (Al registrar no ingresar datos en este campo. Se Genera automaticamente)
+    "email":     String, 
+    "rut":       String, 
+    "name":      String, 
+    "lastName":  String, 
+    "sLastName": String, 
+    "password":  String  
+}
+Autenticar Usuario ( LOGIN )
+
+Ruta: http://TU_IP:3000/sso/login
+Metodo: POST
+Data Format: JSON
+{
+    "email":     "",  <-- String
+    "password":  ""   <-- String
+}
+Obtener datos del usuario autenticado por su token.
+
+Ruta: http://TU_IP:3000/sso/data/(TOKEN)
+Metodo: GET
+Parametro: Token
+Data Format: JSON
+{
+    "message": "User data",
+    "user": {
+        "_id":       String,
+        "token":     String,
+        "email":     String,
+        "rut":       String,
+        "name":      String,
+        "lastName":  String,
+        "sLastName": String,
+        "password":  String,
+        "__v": 0
+    }
+}
+Asistencia ðŸ“–
+Agregar Asistencia
+
+Ruta: http://TU_IP:3000/attendace/add
+Metodo: POST
+Data Format: JSON
+{
+    "idClass":         Number,
+    "teacher":         String,
+    "classCode":       String,
+    "section":         String,
+    "studentFullName": String,
+    "studentRut":      String,
+    "startTime":       Date,
+    "endTime":         Date 
+}
+Obtener todas las asistencias
+
+Ruta: http://TU_IP:3000/attendace/
+Metodo: GET
+Data Format: JSON (Output)
+{
+    "message": "List of Assistance",
+    "attendances": [
+      {
+            "_id":             String,
+            "idClass":         Number,
+            "teacher":         String,
+            "classCode":       String,
+            "section":         String,
+            "studentFullName": String,
+            "studentRut":      String,
+            "startTime":       Date,
+            "endTime":         Date,
+            "__v":             0
+      }
+    ]
+}
+Obtener una asistencia por su ID
+
+Ruta: http://TU_IP:3000/attendace/(_id)
+Parametro: _id
+Metodo: GET
+Data Format: JSON (Output)
+{
+    "message": "Attendance Found",
+    "attendances": {
+            "_id":             String,
+            "idClass":         Number,
+            "teacher":         String,
+            "classCode":       String,
+            "section":         String,
+            "studentFullName": String,
+            "studentRut":      String,
+            "startTime":       Date,
+            "endTime":         Date,
+            "__v":             0
+    }
+}
+Actualizar una asistencia por su ID
+
+Ruta: http://TU_IP:3000/attendace/update/(_id)
+Parametro: _id
+Metodo: PUT
+Data Format: JSON (Output)
+{
+    "message": "Update Attendance",
+    "attendances": {
+            "_id":             String,
+            "idClass":         Number,
+            "teacher":         String,
+            "classCode":       String,
+            "section":         String,
+            "studentFullName": String,
+            "studentRut":      String,
+            "startTime":       Date,
+            "endTime":         Date,
+            "__v":             0
+    }
+}
+Eliminar una asistencia por su ID
+
+Ruta: http://TU_IP:3000/attendace/update/(_id)
+Parametro: _id
+Metodo: Delete
